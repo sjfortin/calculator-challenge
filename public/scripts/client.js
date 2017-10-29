@@ -1,4 +1,5 @@
 var app = angular.module('SezzleChallengeApp', []);
+var socket = io();
 
 app.controller('SezzleChallengeController', ['$http', function ($http) {
 
@@ -8,35 +9,37 @@ app.controller('SezzleChallengeController', ['$http', function ($http) {
         list: []
     }
 
-    // Employee GET request
+    // All Calculations GET request
     self.getCalculations = function () {
         $http({
             method: 'GET',
             url: '/calculations'
         }).then(function (response) {
             self.allCalculations.list = response.data;
-
             self.allCalculations.list.forEach(function (calc) {
                 calc.result = eval(calc.first_number + calc.operator + calc.second_number)
             })
-            console.log('self.allCalculations', self.allCalculations);
         });
     }
 
-    // Employee POST request
+    // Add Calculation POST request
     self.addCalculation = function () {
-
         $http({
             method: 'POST',
             url: '/calculations',
             data: self.newCalculation
         }).then(function (response) {
-            self.getCalculations();
+            socket.emit('requestAllCalculations', "update all calculations across connections");
             self.newCalculation = {}
         });
     };
+
+    socket.on('sendAllCalculations', function (message) {
+        self.getCalculations();
+    });
 
     self.getCalculations();
 
 
 }]);
+

@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <link rel="stylesheet" href="styles/style.css">
-  <script src="vendors/angular.js"></script>
-  <script src="scripts/client.js"></script>
 </head>
 
 <body ng-app="SezzleChallengeApp" ng-controller="SezzleChallengeController as vm">
@@ -33,6 +31,9 @@
   <div class="vm-output" ng-repeat="calculation in vm.allCalculations.list">
     {{calculation.first_number}}{{calculation.operator}}{{calculation.second_number}}={{calculation.result}}
   </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="vendors/angular.js"></script>
+  <script src="scripts/client.js"></script>
 </body>
 
 </html>

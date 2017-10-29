@@ -4,3 +4,4 @@
 To do
 - Error messages for no inputs
 - Socket.io
+- Deploy to Heroku
