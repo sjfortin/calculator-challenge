@@ -6,7 +6,11 @@ app.controller('CalculatorChallengeController', ['$http', function ($http) {
     var self = this;
 
     self.operatorSelected = '';
-
+    self.newCalculation = {
+        first_number: '',
+        second_number: '',
+        operator: ''
+    };
     self.allCalculations = {
         list: []
     }
@@ -26,14 +30,25 @@ app.controller('CalculatorChallengeController', ['$http', function ($http) {
 
     // Add Calculation POST request
     self.addCalculation = function () {
-        $http({
-            method: 'POST',
-            url: '/calculations',
-            data: self.newCalculation
-        }).then(function (response) {
-            socket.emit('requestAllCalculations', "update all calculations across connections");
-            self.newCalculation = {}
-        });
+        console.log('self.newCalculation', self.newCalculation);
+
+        if (self.newCalculation.first_number === '' || self.newCalculation.second_number == '' || self.newCalculation.operator == '') {
+            self.errorMessage = 'Please try again. Make sure to enter in both numbers and select an operator.'
+        } else {
+            $http({
+                method: 'POST',
+                url: '/calculations',
+                data: self.newCalculation
+            }).then(function (response) {
+                socket.emit('requestAllCalculations', "update all calculations across connections");
+                self.newCalculation = {
+                    first_number: '',
+                    second_number: '',
+                    operator: ''
+                };
+                self.errorMessage = '';
+            });
+        }
     };
 
     socket.on('sendAllCalculations', function (message) {

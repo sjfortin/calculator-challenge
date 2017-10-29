@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body ng-app="CalculatorChallengeApp" ng-controller="CalculatorChallengeController as vm">
-  <section class="hero is-info is-bold">
+<body ng-app="CalculatorChallengeApp" ng-controller="CalculatorChallengeController as vm" ng-cloak>
+  <section class="hero is-info is-bold has-text-centered">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -25,7 +25,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column">
+        <div class="column is-8 is-offset-2">
           <h1 class="title is-4">Submit a New Calculation</h1>
           <div class="box box-border">
             <div class="field">
@@ -35,7 +35,7 @@
               </div>
             </div>
             <h1 class="title is-6 has-text-weight-bold" style="margin-bottom: 0.5em">Select Operation</h1>
-            <div class="buttons" style="margin-bottom: 0.5em;">
+            <div class="buttons " style="margin-bottom: 0.5em;">
               <span class="button" ng-click="vm.newCalculation.operator = '+'" ng-class="vm.newCalculation.operator == '+' ? 'is-success' : 'is-light'">Add</span>
               <span class="button" ng-click="vm.newCalculation.operator = '-'" ng-class="vm.newCalculation.operator == '-' ? 'is-success' : 'is-light'">Subtract</span>
               <span class="button" ng-click="vm.newCalculation.operator = '*'" ng-class="vm.newCalculation.operator == '*' ? 'is-success' : 'is-light'">Multiply</span>
@@ -47,14 +47,22 @@
                 <input class="input" type="number" placeholder="Second Number" step="any" ng-model="vm.newCalculation.second_number">
               </div>
             </div>
-            <a class="button is-dark" ng-click="vm.addCalculation()">Submit Calculation</a>
+            <div class="field">
+              <a class="button is-info" ng-click="vm.addCalculation()">Submit Calculation</a>
+            </div>
+            <div class="notification is-danger" ng-if="vm.errorMessage" ng-cloak>
+              {{vm.errorMessage}}
+            </div>
           </div>
         </div>
-        <div class="column">
-          <h1 ng-if="vm.allCalculations.list" class="title is-4">Previous 10 Calculations</h1>
-          <div class="calculation" ng-repeat="calculation in vm.allCalculations.list">
-            <p class="is-size-5">
-              {{$index + 1}}. {{calculation.first_number | number}} {{calculation.operator}} {{calculation.second_number | number}} = {{calculation.result | number}}
+      </div>
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+          <h1 ng-if="vm.allCalculations.list" class="title is-4">Last 10 Calculations</h1>
+          <div class="calculation" ng-repeat="calculation in vm.allCalculations.list" ng-cloak>
+            <p class="is-size-6">
+              {{$index + 1}}. {{calculation.first_number | number}} {{calculation.operator}} {{calculation.second_number | number}} = {{calculation.result
+              | number}}
             </p>
           </div>
         </div>
