@@ -60,8 +60,9 @@
         <div class="column is-8 is-offset-2">
           <h1 ng-if="vm.allCalculations.list" class="title is-4">Last 10 Calculations</h1>
           <div class="calculation" ng-repeat="calculation in vm.allCalculations.list">
-            <p class="is-size-6">
-              {{$index + 1}}. {{calculation.first_number | number}} {{calculation.operator}} {{calculation.second_number | number}} = {{calculation.result
+            <div class="is-size-7" style="color: #a1a1a1;">{{calculation.date_created | date : "short"}}</div>
+            <p class="is-size-6 has-text-weight-semibold">
+              {{calculation.first_number | number}} {{calculation.operator}} {{calculation.second_number | number}} = {{calculation.result
               | number}}
             </p>
           </div>
