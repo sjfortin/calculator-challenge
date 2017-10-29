@@ -1,12 +1,20 @@
-.operators {
-    margin: 10px 0;
+.calculation {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
-.btn {
-    display: inline;
-    background: #666;
-    color: white;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+.calculation:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.calculation:first-of-type {
+    border-top: 1px solid #ddd;
+}
+
+.box-border {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0;
 }

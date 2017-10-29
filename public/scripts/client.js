@@ -5,6 +5,8 @@ app.controller('CalculatorChallengeController', ['$http', function ($http) {
 
     var self = this;
 
+    self.operatorSelected = '';
+
     self.allCalculations = {
         list: []
     }

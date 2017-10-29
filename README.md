@@ -3,5 +3,3 @@
 
 To do
 - Error messages for no inputs
-- Styling
-- Deploy to Heroku
