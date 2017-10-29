@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sezzle Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="vendors/angular.js"></script>
+  <script src="scripts/client.js"></script>
+</head>
+
+<body ng-app="SezzleChallengeApp" ng-controller="SezzleChallengeController as vm">
+  <h1>Sezzle Calculator Challenge</h1>
+  <form>
+    <input type="number" ng-model="vm.newCalculation.first_number" placeholder="First Number" step="any">
+    <div class="operators">
+      <div class="btn add" ng-click="vm.newCalculation.operator = '+'">Add</div>
+      <div class="btn subtract" ng-click="vm.newCalculation.operator = '-'">Subtract</div>
+      <div class="btn mulitply" ng-click="vm.newCalculation.operator = '*'">Mulitply</div>
+      <div class="btn divide" ng-click="vm.newCalculation.operator = '/'">Divide</div>
+    </div>
+    <input type="number" ng-model="vm.newCalculation.second_number" placeholder="Second Number" step="any">
+    <br/>
+    <input type="text" placeholder="(Optional) Name" ng-model="vm.newCalculation.name">
+    <div>
+      <button ng-click="vm.addCalculation()">Submit</button>
+    </div>
+  </form>
+  <div id="calulations">
+
+  </div>
+  <div class="vm-output" ng-repeat="calculation in vm.allCalculations.list">
+    {{calculation.first_number}}{{calculation.operator}}{{calculation.second_number}}={{calculation.result}}
+  </div>
+</body>
+
+</html>

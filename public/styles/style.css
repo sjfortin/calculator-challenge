@@ -1,0 +1,12 @@
+.operators {
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline;
+    background: #666;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
