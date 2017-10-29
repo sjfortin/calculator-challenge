@@ -1,7 +1,7 @@
-# Sezzle Challenge
+# Calculator Challenge
 ## Submission by Sam Fortin
 
 To do
 - Error messages for no inputs
-- Socket.io
+- Styling
 - Deploy to Heroku

@@ -1,7 +1,7 @@
-var app = angular.module('SezzleChallengeApp', []);
+var app = angular.module('CalculatorChallengeApp', []);
 var socket = io();
 
-app.controller('SezzleChallengeController', ['$http', function ($http) {
+app.controller('CalculatorChallengeController', ['$http', function ($http) {
 
     var self = this;
 
