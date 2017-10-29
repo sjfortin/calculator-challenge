@@ -6,7 +6,7 @@ var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 var calculations = require('./routes/calculations');
 
-var port = 5000;
+var port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
